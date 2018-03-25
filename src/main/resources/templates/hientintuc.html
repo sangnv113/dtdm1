@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head"></head>
+
+    <body>
+    <div class='wrapper'>
+    <div th:replace="page :: headerguest"></div>
+        
+	   
+           <!-- Body -->
+           <div class='body'>
+               <!-- Left Body -->
+               <div class='body-left'>
+                   <table style="text-align: justify;"><tbody>
+                       <tr th:each="contact,iterStat : ${tintuc}">
+							
+							<h3 id="news" th:text="${contact.tieude}"></h3><br/>
+							<span  th:text="${contact.noidung}"></span><br/>
+							
+							<!-- <a th:href="@{/tintuc/{id}/edit(id=${contact.id})}"><span
+									class="glyphicon glyphicon-pencil"></span></a>
+							<a th:href="@{/tintuc/{id}/delete(id=${contact.id})}"><span
+									class="glyphicon glyphicon-trash"></span></a> 
+									 -->
+									<br/>
+									
+									
+						</tr>
+                       </tbody>
+                   </table>
+                  
+               </div>
+                <!-- Right Body -->
+                <div class='body-right'>
+                    <div id='r1'>
+                        <h5>
+                             NEWS <a href='http://icsse2017.hcmute.edu.vn/?TopicId=31ca0f13-71be-4bd9-ad28-d3589a3cf6d2'></a>
+                        </h5>
+                    </div>
+                   
+
+		
+		
+			<div id='r4'>
+				<table class="table table-bordered table-hover">
+					
+					<tbody>
+						<tr th:each="contact,iterStat : ${tintucs}">
+							
+							<a  th:href="@{/shownews/{id}(id=${contact.id})}" id="news" th:text="${contact.tieude}"></a><br/>
+							<span id="date" >Date create: </span><span id="date" th:text="${contact.ngay}"></span><br/>
+							
+							<!-- <a th:href="@{/shownews/{id}(id=${contact.id})}"><span
+									class="glyphicon glyphicon-pencil"></span></a>
+							<a th:href="@{/tintuc/{id}/delete(id=${contact.id})}"><span
+									class="glyphicon glyphicon-trash"></span></a> 
+									 -->
+									<br/>
+									
+									
+						</tr>
+					</tbody>
+				</table>
+				<!-- <div >
+				<a th:href="@{/tintuc/create}" class="btn btn-success ">
+				<span class="glyphicon glyphicon-plus"></span> Add 
+			</a></div> -->
+			<br/>
+			</div>
+		
+                    <div id='r1'>
+                        <h5>
+                            IMPORTANT DEADLINES
+                        </h5>
+                    </div>
+                    <div id='r4'>
+                        <strong><span id='s1'>March 7, 2017</span></strong><br/>
+                        <strong><span id='s2'>Extended untill March 26, 2017</span></strong><br/>
+                        <span id='s3'>2-Pages  Extended Abstract Submission</span>
+                    </div>
+                    <div id='r4'>
+                        <strong><span id='s1'>March 30, 2017</span></strong><br/>
+                        <strong><span id='s2'>April 15, 2017</span></strong><br/>
+                        <span id='s3'>Notification of Abstract Acceptance</span>
+                    </div>
+                    <div id='r4'>
+                        <strong><span id='s3'>May 10, 2017</span></strong><br/>
+                        <span id='s3'>4-6 Pages Final Papers Submission</span>
+                    </div>
+                    <div id='r4'>
+                        <strong><span id='s3'>May 20, 2017</span></strong><br/>
+                        <span id='s3'>Notification of Full paper Acceptance/Invitation Letter</span>
+                    </div>
+                    <div id='r4'>
+                        <strong><span id='s3'>May 25, 2017</span></strong><br/>
+                        <span id='s3'>Online Registration</span>
+                    </div>
+                   
+                </div>
+                
+                
+           </div>
+            <div th:replace="page :: footer"></div>
+        </div>
+       
+    </body>
+</html>

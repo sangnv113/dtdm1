@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="page :: head">
+<!-- <script type="text/javascript" src="../static/ckeditor/ckeditor.js"/></script> -->
+</head>
+<body>
+    <div class=''>
+   
+  	 
+
+    <div class="container main-content form">
+        <div class="row">
+           <form action="#" th:action="@{/tintuc/savend}" th:object="${noidung}"
+		    method="POST" novalidate="novalidate">
+		    <input type="hidden" th:field="*{id}" />
+		    <div class="form-group">
+		        <label>Nội dung</label> 
+		        <textarea name="content" id="content"  th:field="*{noidung}"></textarea>
+		            
+		         <script>
+                
+                CKEDITOR.replace( 'editor1' );
+            </script>
+		    </div>
+		    
+		    <button type="submit" class="btn btn-primary">Thay đổi</button>
+		</form> 
+		
+		
+		<!-- <div class="col-lg-6">
+					<h3>B. Ckfinder Button</h3>
+					<div class="avatar">
+						<img id="imgpreview"
+							src="https://yt3.ggpht.com/-f6NCDKG2Ukw/AAAAAAAAAAI/AAAAAAAAAAA/MqMm3rgmqCY/s48-c-k-no-mo-rj-c0xffffff/photo.jpg"
+							class="img-fluid" style="max-width: 300px; max-height: 300px;" />
+					</div>
+					<div class="file-field">
+						<p>
+							<strong id="xImagePath">Selected Image URL</strong><br /> <input
+								class="btn btn-primary btn-sm waves-effect waves-light"
+								type="button" value="Browse Image"
+								onclick="BrowseServer( 'Images:/', 'xImagePath' );" />
+						</p>
+					</div>
+
+					<p>Note: You should select square image !</p>
+				</div>  -->
+		
+        </div>
+    </div><!-- /.container -->
+	<script src="ckeditor/ckeditor.js"></script>
+	<script src="ckfinder/ckfinder.js"></script>
+	<script>
+		CKEDITOR
+				.replace(
+						'content',
+						{
+							filebrowserBrowseUrl : 'ckfinder/ckfinder.html',
+							filebrowserImageBrowseUrl : 'ckfinder/ckfinder.html?type=Images',
+							filebrowserFlashBrowseUrl : 'ckfinder/ckfinder.html?type=Flash',
+							filebrowserUploadUrl : 'ckfinder/core/connector/java/connector.java?command=QuickUpload&amp;type=Files',
+							filebrowserImageUploadUrl : 'ckfinder/core/connector/java/connector.java?command=QuickUpload&amp;type=Images',
+							filebrowserFlashUploadUrl : 'ckfinder/core/connector/java/connector.java?command=QuickUpload&amp;type=Flash'
+						});
+		/*Avatar start*/
+		function BrowseServer(startupPath, functionData) {
+			// You can use the "CKFinder" class to render CKFinder in a page:
+			var finder = new CKFinder();
+
+			// The path for the installation of CKFinder (default = "/ckfinder/").
+			finder.basePath = '../';
+
+			//Startup path in a form: "Type:/path/to/directory/"
+			finder.startupPath = startupPath;
+
+			// Name of a function which is called when a file is selected in CKFinder.
+			finder.selectActionFunction = SetFileField;
+
+			// Additional data to be passed to the selectActionFunction in a second argument.
+			// We'll use this feature to pass the Id of a field that will be updated.
+			finder.selectActionData = functionData;
+
+			// Name of a function which is called when a thumbnail is selected in CKFinder. Preview img
+			// finder.selectThumbnailActionFunction = ShowThumbnails;
+
+			// Launch CKFinder
+			finder.popup();
+		}
+
+		// This is a sample function which is called when a file is selected in CKFinder.
+		function SetFileField(fileUrl, data) {
+			document.getElementById(data["selectActionData"]).innerHTML = this
+					.getSelectedFile().name;
+			document.getElementById("imgpreview").src = fileUrl;
+		}
+		/*Avatar end*/
+	</script>
+    
+    </div>
+    
+    <!-- <div id="page-content-wrapper">
+		<h1 id="home" class="text-center font-bold mt-1">Integrate
+			ckfinder into ckeditor in spring boot project</h1>
+		<h2>ShareEverythings.com</h2>
+		Section: Create Page
+		<section class="section mt-5 container-fluid">
+			First row
+			<div class="row">
+				First col
+				<div class="col-lg-6">
+					<h3>A. Integrate ckfinder into ckeditor</h3>
+					Second card
+					<div class="card mb-r">
+						<textarea name="content" id="content"></textarea>
+					</div>
+					/.Second card
+				</div>
+				/.First col
+				<div class="col-lg-6">
+					<h3>B. Ckfinder Button</h3>
+					<div class="avatar">
+						<img id="imgpreview"
+							src="https://yt3.ggpht.com/-f6NCDKG2Ukw/AAAAAAAAAAI/AAAAAAAAAAA/MqMm3rgmqCY/s48-c-k-no-mo-rj-c0xffffff/photo.jpg"
+							class="img-fluid" style="max-width: 300px; max-height: 300px;" />
+					</div>
+					<div class="file-field">
+						<p>
+							<strong id="xImagePath">Selected Image URL</strong><br /> <input
+								class="btn btn-primary btn-sm waves-effect waves-light"
+								type="button" value="Browse Image"
+								onclick="BrowseServer( 'Images:/', 'xImagePath' );" />
+						</p>
+					</div>
+
+					<p>Note: You should select square image !</p>
+				</div>
+
+			</div>
+			/.First row
+		</section>
+		/.Section: Create Page
+
+	</div>
+	<script src="ckeditor/ckeditor.js"></script>
+	<script src="ckfinder/ckfinder.js"></script>
+	<script>
+		CKEDITOR
+				.replace(
+						'content',
+						{
+							filebrowserBrowseUrl : 'ckfinder/ckfinder.html',
+							filebrowserImageBrowseUrl : 'ckfinder/ckfinder.html?type=Images',
+							filebrowserFlashBrowseUrl : 'ckfinder/ckfinder.html?type=Flash',
+							filebrowserUploadUrl : 'ckfinder/core/connector/java/connector.java?command=QuickUpload&amp;type=Files',
+							filebrowserImageUploadUrl : 'ckfinder/core/connector/java/connector.java?command=QuickUpload&amp;type=Images',
+							filebrowserFlashUploadUrl : 'ckfinder/core/connector/java/connector.java?command=QuickUpload&amp;type=Flash'
+						});
+		/*Avatar start*/
+		function BrowseServer(startupPath, functionData) {
+			// You can use the "CKFinder" class to render CKFinder in a page:
+			var finder = new CKFinder();
+
+			// The path for the installation of CKFinder (default = "/ckfinder/").
+			finder.basePath = '../';
+
+			//Startup path in a form: "Type:/path/to/directory/"
+			finder.startupPath = startupPath;
+
+			// Name of a function which is called when a file is selected in CKFinder.
+			finder.selectActionFunction = SetFileField;
+
+			// Additional data to be passed to the selectActionFunction in a second argument.
+			// We'll use this feature to pass the Id of a field that will be updated.
+			finder.selectActionData = functionData;
+
+			// Name of a function which is called when a thumbnail is selected in CKFinder. Preview img
+			// finder.selectThumbnailActionFunction = ShowThumbnails;
+
+			// Launch CKFinder
+			finder.popup();
+		}
+
+		// This is a sample function which is called when a file is selected in CKFinder.
+		function SetFileField(fileUrl, data) {
+			document.getElementById(data["selectActionData"]).innerHTML = this
+					.getSelectedFile().name;
+			document.getElementById("imgpreview").src = fileUrl;
+		}
+		/*Avatar end*/
+	</script> -->
+</body>
+</html>
